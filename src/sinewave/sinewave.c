@@ -29,12 +29,14 @@ static struct SINEWAVE sinewave = {
     1,
     2,
     0,
+	0,
+	0,
 };
 
 /* 设置将360 度分为多少个点 */
 void sinewave_set_division(unsigned short d)
 {
-    sinewave.division = d;
+    sinewave.division = ( d % MAX_DIVISION );
 }
 
 /* 设置height */
@@ -70,7 +72,11 @@ static double sinewave_get_real_x(double x)
         } else if (real_x > sinewave.circle) {
             real_x -= sinewave.circle;
         }
+		else
+			break;
     }
+
+	return real_x;
 }
 
 /* 获取角度步长 */
@@ -86,7 +92,7 @@ static double sinewave_get_angle(double angle_step)
 }
 
 /* 获取基本的波形y 值 */
-double sinewave_get_base_wave_y(double x)
+static double sinewave_get_base_wave_y(double x)
 {
     double step;
     double real_x;
@@ -110,11 +116,10 @@ double sinewave_get_y(double x)
 int sinewave_get_a_circle(double x)
 {
     unsigned i;
-    double tmp_x;
     for (i = 0; i < sinewave.division; i++) {
         sinewave.circle_x[i] =
             x + ((double)i * sinewave.circle) / (double)sinewave.division;
-        sinewave.circle_y[i] = sinewave_get_y(tmp_x);
+        sinewave.circle_y[i] = sinewave_get_y( sinewave.circle_x[i] );
     }
 
     return 0;
@@ -122,10 +127,15 @@ int sinewave_get_a_circle(double x)
 
 /* int sinewave_get_circle(unsigned int pos, double &x, double &y); */
 /* 获取一个循环的x 和 y 的值 */
-int sinewave_get_circle(unsigned int pos, double &x, double &y)
+int sinewave_get_circle(unsigned int pos, double *x, double *y)
 {
 	pos = pos % MAX_DIVISION;
 
-	x = sinewave.circle_x[pos];
-	y = sinewave.circle_y[pos];
+	if ( NULL == x || NULL == y)
+		return -1;
+
+	*x = sinewave.circle_x[pos];
+	*y = sinewave.circle_y[pos];
+
+	return 0;
 }

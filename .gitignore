@@ -1,2 +1,4 @@
 .ccls-*
 *.json
+main
+*.o
