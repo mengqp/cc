@@ -4,3 +4,5 @@ main
 test
 unittest
 *.o
+!test/
+!unittest/
