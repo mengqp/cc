@@ -1,0 +1,6 @@
+#+TITLE: 写一些c 和 c++ 的小程序
+#+STYLE: <link rel="stylesheet" type="text/css" href="" />
+#+OPTIONS: ^:nil
+#+AUTHOR: mengqp
+
+* Table of Contents                                         :TOC_4_org:noexport:
