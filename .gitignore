@@ -1,4 +1,6 @@
 .ccls-*
 *.json
 main
+test
+unittest
 *.o

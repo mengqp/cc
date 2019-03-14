@@ -1,7 +1,7 @@
 
 # CC = /opt/arm-2009q1/bin/arm-none-linux-gnueabi-gcc
 CC = gcc
-APP = test
+APP = unittest
 
 SRC = ../../src/sinewave/
 
@@ -12,7 +12,7 @@ OBJS=$(OBJS1) $(OBJS2)
 
 CFLAGS=-g -o
 
-LINKOPTS = -lm -lpthread -dl
+LINKOPTS = -fno-stack-protector -lbcunit -dynamic -lm -lpthread -dl
 
 MY_INC= -I$(SRC)
 MY_LIBS=
