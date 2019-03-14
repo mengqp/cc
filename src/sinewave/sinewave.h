@@ -5,7 +5,6 @@
 #ifndef SINEWAVE_H
 #define SINEWAVE_H
 
-
 void sinewave_set_division(unsigned short d);
 void sinewave_set_height(double h);
 int sinewave_set_circle(double c);
