@@ -3,7 +3,7 @@
 CC = gcc
 APP = unittest
 
-SRC = ../../src/sinewave/
+SRC = ../src/
 
 OBJS1 = $(APP).o
 OBJS2 = $(SRC)sinewave.o
